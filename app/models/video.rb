@@ -1,5 +1,5 @@
 class Video < ActiveRecord::Base
-  belongs_to :category
+  belongs_to :category 
   #validates :title, :presence => true
   #validates :description, presence: true
   validates_presence_of :title, :description
@@ -8,5 +8,6 @@ class Video < ActiveRecord::Base
     return [] if search_term.blank?
     where("title LIKE ?", "%#{search_term}%")
   end
+
 
 end
