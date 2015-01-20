@@ -6,25 +6,24 @@ describe Video do
   it { should validate_presence_of(:description)}
 
   describe "search_by_title" do
+    let(:videos) do
+      Video.create(title: "family_guy", description: "in Fox 5")
+      Video.create(title: "family_guy_2", description: "also in Fox 5")
+      Video.create(title: "hell kitchen", description: "in ABC") 
+    end
 
-    it "shouldn't return anything but empty array if no title pattern match" do
-      family_guy = Video.create(title: "family_guy", description: "in Fox 5")
-      family_guy2 = Video.create(title: "family_guy_2", description: "also in Fox 5")
-      hell_kitchen = Video.create(title: "hell kitchen", description: "in ABC") 
+    it "shouldn't return anything but empty array if no title pattern match" do      
+      videos
       expect(Video.search_by_title("geogre")).to eq([])
     end
 
     it "returns videos which cotain title pattern" do 
-      family_guy = Video.create(title: "family_guy", description: "in Fox 5")
-      family_guy2 = Video.create(title: "family_guy_2", description: "also in Fox 5")
-      hell_kitchen = Video.create(title: "hell kitchen", description: "in ABC") 
-      expect(Video.search_by_title("family")).to include(family_guy, family_guy2)
+      videos
+      expect(Video.search_by_title("family").count).to eq(2)
     end
 
     it "return an empty array for searching with empty string" do
-      family_guy = Video.create(title: "family_guy", description: "in Fox 5")
-      family_guy2 = Video.create(title: "family_guy_2", description: "also in Fox 5")
-      hell_kitchen = Video.create(title: "hell kitchen", description: "in ABC") 
+      videos
       expect(Video.search_by_title("")).to eq([])
     end
   

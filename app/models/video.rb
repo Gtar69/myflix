@@ -7,9 +7,7 @@ class Video < ActiveRecord::Base
 
   def self.search_by_title(search_term)
     return [] if search_term.blank?
-    #@s = search_term
-    #where("title LIKE ?", "%#{search_term}%")
-    search(search_term)
+    search search_term  
   end
   
   def avg_rating
