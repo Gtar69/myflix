@@ -11,7 +11,8 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'bootstrap_form'
 gem 'bcrypt', '~>3.1.7'
-
+gem 'fabrication' 
+gem 'faker'
 group :development do
   gem 'thin'
   gem "better_errors"
@@ -24,12 +25,10 @@ group :development, :test do
   gem 'rspec-rails', '2.99'
 end
 
-group :test do
-  gem 'shoulda-matchers'
-end
 
 group :test do
   gem 'database_cleaner', '1.2.0'
+  gem 'shoulda-matchers'
 end
 
 group :production do

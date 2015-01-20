@@ -13,7 +13,8 @@ Myflix::Application.routes.draw do
       get :search
     end
   end
-  
+
+  resources :reviews, only: [:create]
   resources :categories
   resources :users, only: [:create]
   resources :sessions, only: [:create]

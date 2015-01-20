@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     User.find(session[:user_id]) if session[:user_id]
   end
 
+  # let current_user as a helper that can be used in the view
   helper_method :current_user
 
 end
