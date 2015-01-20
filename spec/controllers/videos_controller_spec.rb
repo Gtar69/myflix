@@ -5,7 +5,6 @@ describe VideosController do
   describe "GET show" do
     before do
       session[:user_id] = Fabricate(:user).id
-      #8.times {Fabricate(:video)}
       @video = Fabricate(:video)
     end
 
@@ -14,7 +13,12 @@ describe VideosController do
       assigns(:video).should == @video 
     end
 
-    it "set the @reviews variables"
+    it "set the @reviews variables" do
+      review1 = Fabricate(:review, video: @video)
+      review2 = Fabricate(:review, video: @video)
+      get :show, id: @video.id
+      assigns(:reviews).should =~ [review2, review1]
+    end
 
     it "render the show template" do
       get :show, id: @video.id 

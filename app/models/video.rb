@@ -3,10 +3,13 @@ class Video < ActiveRecord::Base
   validates_presence_of :title, :description
   has_many :reviews
   has_many :videos, through: :reviews
+  scope :search, -> (search_term) {where("title LIKE ?", "%#{search_term}%")}
 
   def self.search_by_title(search_term)
     return [] if search_term.blank?
-    where("title LIKE ?", "%#{search_term}%")
+    #@s = search_term
+    #where("title LIKE ?", "%#{search_term}%")
+    search(search_term)
   end
   
   def avg_rating

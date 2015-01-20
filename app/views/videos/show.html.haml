@@ -21,7 +21,7 @@
           = label_tag :rating, "Rate this video"
           .row
             .col-sm-3
-              = select_tag :rating, options_for_select([['1 Stars',1],['2 Stars',2],['3 Stars',3],['4 Stars', 4],['5 Stars',5]], html: {class: "col-sm-3"}), class: "form-control" 
+              = select_tag :rating, options_for_select([5,4,3,2,1].map{|number| [pluralize(number," Star")]})
           
           .form-group
             = label_tag :review, "Write Review"
