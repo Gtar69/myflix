@@ -14,7 +14,7 @@ class Video < ActiveRecord::Base
     avg = 0.0
     reviews.map {|review| avg = avg + review.rating }
     (avg = avg/reviews.count) if reviews.count > 0
-    avg
+    avg.round(1)
   end  
 
 end

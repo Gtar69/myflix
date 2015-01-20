@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
   def create
     p params[:id]
     binding.pry
-    @review = Review.new(rating: params[:rating].to_i, review: params[:review])
+    @review = Review.new(rating: params[:rating].split[0], content: params[:content])
     @review.video_id = params[:video_id]
     @review.user_id = current_user.id
     if @review.save
