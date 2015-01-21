@@ -15,4 +15,15 @@ class VideosController < ApplicationController
     @videos = Video.search_by_title(params[:search])
   end
 
+  def add_to_queue
+    @video = Video.find(params[:id])
+    if !current_user.videos.include?(@video)
+      current_user.add_video_to_queue(@video, current_user)
+      redirect_to my_queue_path
+    else
+      flash[:error] = "You already have the video in your queues"
+    end
+  end
+
+
 end
