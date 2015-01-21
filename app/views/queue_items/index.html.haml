@@ -15,7 +15,7 @@
               %th(width="15%") Remove
           %tbody
             - @queue_items.each do |queue_item|
-              %tr
+              %tr                
                 %td
                   %input.form-control(type="text" value="#{queue_item.order}")
                 %td
@@ -32,6 +32,6 @@
                 %td
                   = link_to "#{Category.find(Video.find(queue_item.video_id).category_id).name}"
                 %td
-                  = link_to "", method: :post do
+                  = link_to queue_item_path(queue_item), method: :delete do
                     %i.glyphicon.glyphicon-remove
-        = button_to "Update Instant Queue", nil, class: "btn btn-default"
+        = button_to "Update Instant Queue", class: "btn btn-default"
