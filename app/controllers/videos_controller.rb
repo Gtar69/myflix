@@ -17,13 +17,13 @@ class VideosController < ApplicationController
 
   def add_to_queue
     @video = Video.find(params[:id])
-    binding.pry
     if !current_user.videos.include?(@video)
       p "add some video to queue"
       current_user.add_video_to_queue(@video, current_user)
       redirect_to my_queue_path
     else
       flash[:error] = "You already have the video in your queues"
+      redirect_to video_path(@video)
     end
   end
 

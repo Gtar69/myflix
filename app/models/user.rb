@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
     queue_item = queue_items.build
     queue_item.user = user
     queue_item.video = video
+    queue_item.order = queue_items.count + 1
     queue_item.save
   end
 end
