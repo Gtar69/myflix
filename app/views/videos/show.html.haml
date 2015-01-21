@@ -6,8 +6,41 @@
       .video_info.col-sm-3
         %header
           %h3= @video.title
-          %span Rating: 4.5/5.0
+          %span Rating: #{@average}
         %p= @video.description
         .actions
           %a.btn.btn-primary(href="") Watch Now
           %a.btn.btn-default(href="") + My Queue
+%section.reviews.container
+  .row
+    .col-sm-10.col-sm-offset-1
+      %form
+      = form_tag reviews_path, class: "form-group" do
+        %fieldset
+          = hidden_field_tag :video_id, @video.id
+          = label_tag :rating, "Rate this video"
+          .row
+            .col-sm-3
+              = select_tag :rating, options_for_select([5,4,3,2,1].map{|number| [pluralize(number," Star")]})
+          .form-group
+            = label_tag :content, "Write Review"
+          .row
+            .col-sm-8
+              = text_area_tag :content, nil, {class: "form-control",rows: 6}
+        %fieldset.form-group.actions.clearfix
+          = submit_tag "Submit", class: "btn"
+          %a(href="") Cancel
+      %header
+        %h3 User Reviews (#{@reviews.count})
+      %ul
+
+        - @reviews.each do |review|
+          %article.review
+            %li.row
+              .col-sm-2
+                %span Rating: #{review.rating} / 5
+                %p by <a href="">#{User.find(review.user_id).full_name}</a>
+              .col-sm-8
+                %p #{review.content}
+
+
