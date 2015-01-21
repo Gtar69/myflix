@@ -11,10 +11,10 @@ class Video < ActiveRecord::Base
   end
   
   def avg_rating
-    avg = 0.0
-    reviews.map {|review| avg = avg + review.rating }
-    (avg = avg/reviews.count) if reviews.count > 0
-    avg.round(1)
+    rating_avg = 0.0
+    reviews.map {|review| rating_avg = rating_avg + review.rating }
+    (rating_avg = rating_avg/reviews.count) if reviews.count > 0
+    rating_avg.round(1)
   end  
 
 end
