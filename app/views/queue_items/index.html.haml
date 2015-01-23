@@ -19,7 +19,7 @@
                 %td
                   %input.form-control(type="text" value="#{queue_item.order}")
                 %td
-                  = link_to "#{Video.find(queue_item.video_id).title}"
+                  = link_to "#{Video.find(queue_item.video_id).title}", video_path(queue_item.video)
                 %td
                   = button_to "Play", nil, class: "btn btn-default"
                 %td
