@@ -1,5 +1,5 @@
 class AddOrderToQueueItem < ActiveRecord::Migration
   def change
-    add_column :queue_items, :order, :integer
+    add_column :queue_items, :position, :integer
   end
 end

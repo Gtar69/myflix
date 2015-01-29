@@ -3,14 +3,10 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   has_secure_password
   has_many :reviews
-  has_many :queue_items
+  has_many :queue_items, -> {order(position: :asc)}
   has_many :videos, through: :queue_items
 
-  def add_video_to_queue(video,user)
-    queue_item = queue_items.build
-    queue_item.user = user
-    queue_item.video = video
-    queue_item.order = queue_items.count + 1
-    queue_item.save
+  def queued_video?(video)
+    queue_items.map(&:video).include?(video)
   end
 end

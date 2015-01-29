@@ -10,20 +10,18 @@ dramas = Category.create(name: "Dramas")
 
 for i in 0..3
 Video.create(title: "family guy", description: 
-	"funny episode", small_cover_url: "family_guy", 
-  large_cover_url: "family_guy", category: comedies)
+	"funny episode", small_cover_url: "/tmp/family_guy.jpg", 
+  large_cover_url: "/tmp/family_guy.jpg", category: comedies)
 end
 
 for i in 0..3
 Video.create(title: "south park", description: 
-	"south park", small_cover_url: "south_park", 
-  large_cover_url: "south_park", category: comedies)
+	"south park", small_cover_url: "/tmp/south_park.jpg", 
+  large_cover_url: "/tmp/south_park.jpg", category: comedies)
 end
 
 Video.create(title: "monk", description: 
-  "monk la", small_cover_url: "monk", 
-  large_cover_url: "monk_large", category: dramas)
+  "monk la", small_cover_url: "/tmp/monk.jpg", 
+  large_cover_url: "/tmp/monk_large.jpg", category: dramas)
 
-#cat_1 = Category.create(name: "TV Commodies")
-#cat_2 = Category.create(name: "TV show")
-#cat_1.videos << family_guy
+

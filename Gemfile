@@ -13,6 +13,7 @@ gem 'bootstrap_form'
 gem 'bcrypt', '~>3.1.7'
 gem 'fabrication' 
 gem 'faker'
+
 group :development do
   gem 'thin'
   gem "better_errors"
@@ -29,6 +30,8 @@ end
 group :test do
   gem 'database_cleaner', '1.2.0'
   gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'launchy'
 end
 
 group :production do
