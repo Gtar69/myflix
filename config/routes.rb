@@ -18,9 +18,10 @@ Myflix::Application.routes.draw do
       post :add_to_queue
     end
   end
+
   resources :queue_items, only: [:create,:destroy]
   resources :reviews, only: [:create]
   resources :categories
-  resources :users, only: [:create]
+  resources :users, only: [:create, :show]
   resources :sessions, only: [:create]
 end
