@@ -3,7 +3,7 @@ class Video < ActiveRecord::Base
   validates_presence_of :title, :description
   has_many :reviews
   has_many :queue_items
-  scope :search, -> (search_term) {where("title LIKE ?", "%#{search_term}%")}
+  scope :search, -> (search_term) { where("title LIKE ?", "%#{search_term}%") }
 
   def self.search_by_title(search_term)
     return [] if search_term.blank?

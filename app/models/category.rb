@@ -6,5 +6,4 @@ class Category < ActiveRecord::Base
     videos.order("created_at DESC").limit(6)   
   end
 
-
 end
