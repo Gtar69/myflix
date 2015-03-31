@@ -34,13 +34,14 @@
       %header
         %h3 User Reviews (#{@reviews.count})
       %ul
-
         - @reviews.each do |review|
           %article.review
             %li.row
               .col-sm-2
                 %span Rating: #{review.rating} / 5
-                %p by <a href="">#{User.find(review.user_id).full_name}</a>
+                %p 
+                  by 
+                  = link_to review.user.full_name, review.user
               .col-sm-8
                 %p #{review.content}
 
