@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
-ruby '2.1.1'
+source "https://rubygems.org"
+ruby '2.1.4' # or other from link above
 
 gem 'bootstrap-sass'
 gem 'coffee-rails'
@@ -14,6 +14,7 @@ gem 'bcrypt', '~>3.1.7'
 gem 'fabrication'
 gem 'faker'
 gem "sidekiq"
+gem "unicorn"
 
 
 group :development do
@@ -21,7 +22,6 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "letter_opener"
-  #gem "sidekiq"
   gem "sinatra", require: false
   gem "slim"
 end
